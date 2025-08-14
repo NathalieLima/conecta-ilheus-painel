@@ -82,11 +82,11 @@ const Users: React.FC = () => {
     { range: '55+', count: 3732, percentage: 8, growth: '+22%' }
   ];
 
-  const educationData = [
-    { level: 'Ensino Superior', count: 18500, percentage: 39 },
-    { level: 'Ensino Médio', count: 16200, percentage: 34 },
-    { level: 'Pós-graduação', count: 8900, percentage: 19 },
-    { level: 'Ensino Fundamental', count: 4232, percentage: 9 }
+  const stayDurationData = [
+    { period: '1-3 dias', count: 18500, percentage: 39 },
+    { period: '4-7 dias', count: 16200, percentage: 34 },
+    { period: '1-2 semanas', count: 8900, percentage: 19 },
+    { period: 'Mais de 2 semanas', count: 4232, percentage: 9 }
   ];
 
   const womenPreferences = [
@@ -242,23 +242,23 @@ const Users: React.FC = () => {
           </div>
         </div>
 
-        {/* Escolaridade */}
+        {/* Tempo de Permanência */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Nível de Escolaridade</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Tempo de Permanência</h3>
           <div className="space-y-3">
-            {educationData.map((edu, index) => (
+            {stayDurationData.map((stay, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-gray-900">{edu.level}</span>
-                  <span className="text-sm text-gray-600">{edu.percentage}%</span>
+                  <span className="text-sm font-medium text-gray-900">{stay.period}</span>
+                  <span className="text-sm text-gray-600">{stay.percentage}%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div 
                     className="bg-indigo-600 h-2 rounded-full transition-all duration-500"
-                    style={{ width: `${edu.percentage}%` }}
+                    style={{ width: `${stay.percentage}%` }}
                   />
                 </div>
-                <p className="text-xs text-gray-500">{edu.count.toLocaleString('pt-BR')} usuários</p>
+                <p className="text-xs text-gray-500">{stay.count.toLocaleString('pt-BR')} usuários</p>
               </div>
             ))}
           </div>
@@ -450,11 +450,11 @@ const Users: React.FC = () => {
           
           <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
             <div className="flex items-center space-x-2 mb-2">
-              <GraduationCap className="w-5 h-5 text-purple-600" />
-              <h4 className="font-medium text-purple-900">Alta Escolaridade</h4>
+              <Calendar className="w-5 h-5 text-purple-600" />
+              <h4 className="font-medium text-purple-900">Estadia Curta</h4>
             </div>
             <p className="text-sm text-purple-800">
-              58% possuem ensino superior ou pós-graduação, sugerindo público com maior poder aquisitivo.
+              73% dos visitantes ficam até 1 semana, indicando turismo de curta duração predominante.
             </p>
           </div>
         </div>
