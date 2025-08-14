@@ -4,7 +4,6 @@ import {
   TrendingUp, 
   TrendingDown,
   Users, 
-  Bus, 
   MapPin, 
   Calendar,
   Download,
@@ -14,8 +13,12 @@ import {
   CheckCircle,
   Clock,
   Target,
-  Activity,
-  Zap
+  Star,
+  Heart,
+  Camera,
+  Utensils,
+  Music,
+  Smartphone
 } from 'lucide-react';
 import Chart from './Chart';
 
@@ -25,50 +28,50 @@ const Analytics: React.FC = () => {
 
   const kpis = [
     {
-      title: 'Eficiência do Transporte',
-      value: '87%',
-      change: '+5%',
+      title: 'Satisfação Geral',
+      value: '4.7/5',
+      change: '+0.2',
       changeType: 'positive' as const,
-      icon: Bus,
+      icon: Star,
       color: 'blue',
-      description: 'Pontualidade média dos ônibus'
-    },
-    {
-      title: 'Satisfação Turística',
-      value: '4.6/5',
-      change: '+0.3',
-      changeType: 'positive' as const,
-      icon: Users,
-      color: 'green',
       description: 'Avaliação média dos visitantes'
     },
     {
-      title: 'Ocupação de Eventos',
-      value: '92%',
-      change: '-2%',
-      changeType: 'negative' as const,
-      icon: Calendar,
-      color: 'purple',
-      description: 'Taxa média de ocupação'
+      title: 'Taxa de Retorno',
+      value: '68%',
+      change: '+12%',
+      changeType: 'positive' as const,
+      icon: Users,
+      color: 'green',
+      description: 'Visitantes que retornaram'
     },
     {
-      title: 'Cobertura de Rotas',
-      value: '78%',
-      change: '+12%',
+      title: 'Engajamento Digital',
+      value: '85%',
+      change: '+8%',
+      changeType: 'positive' as const,
+      icon: Calendar,
+      color: 'purple',
+      description: 'Interação com eventos'
+    },
+    {
+      title: 'Tempo Médio de Visita',
+      value: '5.2 dias',
+      change: '+0.8',
       changeType: 'positive' as const,
       icon: MapPin,
       color: 'orange',
-      description: 'Áreas atendidas pelo transporte'
+      description: 'Duração média das estadias'
     }
   ];
 
-  const transportData = [
-    { name: 'Jan', pontualidade: 82, lotacao: 65, satisfacao: 4.2 },
-    { name: 'Fev', pontualidade: 85, lotacao: 72, satisfacao: 4.3 },
-    { name: 'Mar', pontualidade: 88, lotacao: 68, satisfacao: 4.4 },
-    { name: 'Abr', pontualidade: 87, lotacao: 75, satisfacao: 4.5 },
-    { name: 'Mai', pontualidade: 90, lotacao: 70, satisfacao: 4.6 },
-    { name: 'Jun', pontualidade: 87, lotacao: 78, satisfacao: 4.6 }
+  const satisfactionData = [
+    { name: 'Jan', satisfacao: 4.2, retorno: 62, engajamento: 78 },
+    { name: 'Fev', satisfacao: 4.3, retorno: 65, engajamento: 80 },
+    { name: 'Mar', satisfacao: 4.4, retorno: 68, engajamento: 82 },
+    { name: 'Abr', satisfacao: 4.5, retorno: 70, engajamento: 83 },
+    { name: 'Mai', satisfacao: 4.6, retorno: 72, engajamento: 85 },
+    { name: 'Jun', satisfacao: 4.7, retorno: 68, engajamento: 85 }
   ];
 
   const tourismTrends = [
@@ -80,42 +83,77 @@ const Analytics: React.FC = () => {
     { name: 'Jun', visitantes: 19500, eventos: 25, receita: 950000 }
   ];
 
-  const routePerformance = [
-    { route: 'Linha 405', efficiency: 92, passengers: 1250, revenue: 15600 },
-    { route: 'Linha 201', efficiency: 88, passengers: 980, revenue: 12250 },
-    { route: 'Linha 302', efficiency: 85, passengers: 1100, revenue: 13750 },
-    { route: 'Linha 150', efficiency: 79, passengers: 850, revenue: 10625 },
-    { route: 'Linha 220', efficiency: 91, passengers: 1050, revenue: 13125 }
+  const eventPerformance = [
+    { event: 'Festival de Chocolate', satisfaction: 4.8, attendance: 5200, revenue: 125000 },
+    { event: 'Carnaval de Ilhéus', satisfaction: 4.6, attendance: 25000, revenue: 450000 },
+    { event: 'Festival de Inverno', satisfaction: 4.9, attendance: 2100, revenue: 85000 },
+    { event: 'Festa de São Sebastião', satisfaction: 4.4, attendance: 8500, revenue: 180000 },
+    { event: 'Semana do Cacau', satisfaction: 4.7, attendance: 3200, revenue: 95000 }
+  ];
+
+  const userProfileInsights = [
+    {
+      profile: 'Mulheres 25-34',
+      percentage: 32,
+      preferences: ['Gastronomia', 'Arte & Cultura', 'Música'],
+      avgStay: '4.2 dias',
+      satisfaction: 4.8,
+      spending: 'R$ 850'
+    },
+    {
+      profile: 'Homens 35-44',
+      percentage: 28,
+      preferences: ['Esportes', 'Negócios', 'Gastronomia'],
+      avgStay: '6.1 dias',
+      satisfaction: 4.5,
+      spending: 'R$ 1.200'
+    },
+    {
+      profile: 'Casais 45+',
+      percentage: 24,
+      preferences: ['Cultura', 'Relaxamento', 'História'],
+      avgStay: '7.3 dias',
+      satisfaction: 4.9,
+      spending: 'R$ 1.850'
+    },
+    {
+      profile: 'Jovens 18-24',
+      percentage: 16,
+      preferences: ['Música', 'Aventura', 'Vida Noturna'],
+      avgStay: '3.1 dias',
+      satisfaction: 4.3,
+      spending: 'R$ 420'
+    }
   ];
 
   const insights = [
     {
       type: 'success',
-      title: 'Melhoria na Pontualidade',
-      description: 'A Linha 405 apresentou 15% de melhoria na pontualidade após otimização de rotas.',
+      title: 'Alta Satisfação Feminina',
+      description: 'Mulheres de 25-34 anos apresentam a maior satisfação (4.8/5) e preferem eventos gastronômicos.',
       impact: 'Alto',
-      action: 'Replicar estratégia para outras linhas'
+      action: 'Expandir programação gastronômica'
     },
     {
       type: 'warning',
-      title: 'Sobrecarga em Horários de Pico',
-      description: 'Linhas do centro apresentam 95% de lotação entre 17h-19h.',
+      title: 'Baixo Engajamento Jovem',
+      description: 'Visitantes de 18-24 anos têm menor satisfação (4.3/5) e menor tempo de permanência.',
       impact: 'Médio',
-      action: 'Considerar aumento de frota'
+      action: 'Criar eventos voltados ao público jovem'
     },
     {
       type: 'info',
-      title: 'Crescimento do Turismo',
-      description: 'Aumento de 23% no fluxo turístico comparado ao mesmo período do ano anterior.',
+      title: 'Potencial de Crescimento',
+      description: 'Casais 45+ gastam 340% mais que jovens e ficam mais tempo na cidade.',
       impact: 'Alto',
-      action: 'Expandir infraestrutura turística'
+      action: 'Focar marketing no público maduro'
     },
     {
       type: 'error',
-      title: 'Baixa Cobertura Rural',
-      description: 'Apenas 45% das áreas rurais possuem acesso ao transporte público.',
+      title: 'Sazonalidade Acentuada',
+      description: 'Variação de 45% no fluxo turístico entre alta e baixa temporada.',
       impact: 'Alto',
-      action: 'Planejar expansão de rotas'
+      action: 'Desenvolver estratégias para baixa temporada'
     }
   ];
 
@@ -158,7 +196,7 @@ const Analytics: React.FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Análises e Relatórios</h1>
-          <p className="text-gray-600 mt-1">Insights estratégicos para melhoria da infraestrutura urbana</p>
+          <p className="text-gray-600 mt-1">Insights estratégicos sobre turismo e perfil dos visitantes</p>
         </div>
         <div className="flex items-center space-x-3">
           <select 
@@ -191,22 +229,22 @@ const Analytics: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">Performance do Transporte</h3>
+            <h3 className="text-lg font-semibold text-gray-900">Satisfação e Engajamento</h3>
             <button className="text-gray-400 hover:text-gray-600">
               <RefreshCw className="w-4 h-4" />
             </button>
           </div>
           <div className="h-64">
             <svg className="w-full h-full">
-              {transportData.map((item, index) => {
-                const x = (index / (transportData.length - 1)) * 300;
-                const pontualidadeY = 220 - (item.pontualidade / 100) * 180;
-                const lotacaoY = 220 - (item.lotacao / 100) * 180;
+              {satisfactionData.map((item, index) => {
+                const x = (index / (satisfactionData.length - 1)) * 300;
+                const satisfacaoY = 220 - ((item.satisfacao - 4) / 1) * 180;
+                const engajamentoY = 220 - (item.engajamento / 100) * 180;
                 
                 return (
                   <g key={index}>
-                    <circle cx={x} cy={pontualidadeY} r="4" fill="#3B82F6" />
-                    <circle cx={x} cy={lotacaoY} r="4" fill="#10B981" />
+                    <circle cx={x} cy={satisfacaoY} r="4" fill="#3B82F6" />
+                    <circle cx={x} cy={engajamentoY} r="4" fill="#10B981" />
                     <text x={x} y={245} textAnchor="middle" className="text-xs fill-gray-600">
                       {item.name}
                     </text>
@@ -215,9 +253,9 @@ const Analytics: React.FC = () => {
               })}
               
               <path
-                d={`M ${transportData.map((item, index) => {
-                  const x = (index / (transportData.length - 1)) * 300;
-                  const y = 220 - (item.pontualidade / 100) * 180;
+                d={`M ${satisfactionData.map((item, index) => {
+                  const x = (index / (satisfactionData.length - 1)) * 300;
+                  const y = 220 - ((item.satisfacao - 4) / 1) * 180;
                   return `${index === 0 ? 'M' : 'L'} ${x},${y}`;
                 }).join(' ')}`}
                 stroke="#3B82F6"
@@ -226,9 +264,9 @@ const Analytics: React.FC = () => {
               />
               
               <path
-                d={`M ${transportData.map((item, index) => {
-                  const x = (index / (transportData.length - 1)) * 300;
-                  const y = 220 - (item.lotacao / 100) * 180;
+                d={`M ${satisfactionData.map((item, index) => {
+                  const x = (index / (satisfactionData.length - 1)) * 300;
+                  const y = 220 - (item.engajamento / 100) * 180;
                   return `${index === 0 ? 'M' : 'L'} ${x},${y}`;
                 }).join(' ')}`}
                 stroke="#10B981"
@@ -240,39 +278,39 @@ const Analytics: React.FC = () => {
           <div className="flex items-center justify-center space-x-6 mt-4">
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-              <span className="text-sm text-gray-600">Pontualidade</span>
+              <span className="text-sm text-gray-600">Satisfação</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span className="text-sm text-gray-600">Lotação</span>
+              <span className="text-sm text-gray-600">Engajamento</span>
             </div>
           </div>
         </div>
 
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Tendências do Turismo</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Fluxo de Visitantes</h3>
           <Chart data={tourismTrends} type="area" color="#8B5CF6" />
         </div>
       </div>
 
-      {/* Performance por Rota */}
+      {/* Performance por Evento */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Performance por Linha de Ônibus</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Performance dos Eventos</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Linha
+                  Evento
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Eficiência
+                  Satisfação
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Passageiros/Dia
+                  Participantes
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Receita Mensal
+                  Receita
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Status
@@ -280,47 +318,85 @@ const Analytics: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {routePerformance.map((route, index) => (
+              {eventPerformance.map((event, index) => (
                 <tr key={index} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{route.route}</div>
+                    <div className="text-sm font-medium text-gray-900">{event.event}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="w-16 bg-gray-200 rounded-full h-2 mr-3">
-                        <div 
-                          className={`h-2 rounded-full ${
-                            route.efficiency >= 90 ? 'bg-green-500' :
-                            route.efficiency >= 80 ? 'bg-yellow-500' : 'bg-red-500'
-                          }`}
-                          style={{ width: `${route.efficiency}%` }}
-                        />
-                      </div>
-                      <span className="text-sm text-gray-900">{route.efficiency}%</span>
+                      <Star className="w-4 h-4 text-orange-500 fill-current mr-2" />
+                      <span className="text-sm text-gray-900">{event.satisfaction}/5</span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {route.passengers.toLocaleString('pt-BR')}
+                    {event.attendance.toLocaleString('pt-BR')}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    R$ {route.revenue.toLocaleString('pt-BR')}
+                    R$ {event.revenue.toLocaleString('pt-BR')}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                      route.efficiency >= 90 
+                      event.satisfaction >= 4.7 
                         ? 'bg-green-100 text-green-800'
-                        : route.efficiency >= 80
+                        : event.satisfaction >= 4.5
                         ? 'bg-yellow-100 text-yellow-800'
                         : 'bg-red-100 text-red-800'
                     }`}>
-                      {route.efficiency >= 90 ? 'Excelente' : 
-                       route.efficiency >= 80 ? 'Bom' : 'Precisa Atenção'}
+                      {event.satisfaction >= 4.7 ? 'Excelente' : 
+                       event.satisfaction >= 4.5 ? 'Bom' : 'Precisa Atenção'}
                     </span>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+      </div>
+
+      {/* Análise de Perfil dos Usuários */}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Análise por Perfil de Visitante</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {userProfileInsights.map((profile, index) => (
+            <div key={index} className="border border-gray-200 rounded-lg p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-sm font-semibold text-gray-900">{profile.profile}</h4>
+                <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+                  {profile.percentage}%
+                </span>
+              </div>
+              
+              <div className="space-y-2 mb-3">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-gray-600">Permanência:</span>
+                  <span className="font-medium">{profile.avgStay}</span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-gray-600">Satisfação:</span>
+                  <div className="flex items-center">
+                    <Star className="w-3 h-3 text-orange-500 fill-current mr-1" />
+                    <span className="font-medium">{profile.satisfaction}</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-gray-600">Gasto médio:</span>
+                  <span className="font-medium">{profile.spending}</span>
+                </div>
+              </div>
+              
+              <div>
+                <p className="text-xs text-gray-500 mb-1">Preferências:</p>
+                <div className="flex flex-wrap gap-1">
+                  {profile.preferences.map((pref, prefIndex) => (
+                    <span key={prefIndex} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      {pref}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -367,46 +443,46 @@ const Analytics: React.FC = () => {
           <div className="space-y-4">
             <div className="border border-gray-200 rounded-lg p-4">
               <div className="flex items-center justify-between mb-2">
-                <h4 className="text-sm font-medium text-gray-900">Pontualidade do Transporte</h4>
-                <span className="text-sm text-gray-600">87% / 90%</span>
+                <h4 className="text-sm font-medium text-gray-900">Satisfação Geral</h4>
+                <span className="text-sm text-gray-600">4.7 / 5.0</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-blue-600 h-2 rounded-full" style={{ width: '97%' }} />
+                <div className="bg-blue-600 h-2 rounded-full" style={{ width: '94%' }} />
+              </div>
+              <p className="text-xs text-gray-500 mt-1">Meta: 5.0/5 até dezembro</p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="text-sm font-medium text-gray-900">Taxa de Retorno</h4>
+                <span className="text-sm text-gray-600">68% / 75%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-orange-600 h-2 rounded-full" style={{ width: '91%' }} />
+              </div>
+              <p className="text-xs text-gray-500 mt-1">Meta: 75% até junho</p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="text-sm font-medium text-gray-900">Tempo Médio de Visita</h4>
+                <span className="text-sm text-gray-600">5.2 / 6.0 dias</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-green-600 h-2 rounded-full" style={{ width: '87%' }} />
+              </div>
+              <p className="text-xs text-gray-500 mt-1">Meta: 6.0 dias até setembro</p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="text-sm font-medium text-gray-900">Engajamento Digital</h4>
+                <span className="text-sm text-gray-600">85% / 90%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-purple-600 h-2 rounded-full" style={{ width: '94%' }} />
               </div>
               <p className="text-xs text-gray-500 mt-1">Meta: 90% até dezembro</p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-4">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="text-sm font-medium text-gray-900">Cobertura de Rotas</h4>
-                <span className="text-sm text-gray-600">78% / 85%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-orange-600 h-2 rounded-full" style={{ width: '92%' }} />
-              </div>
-              <p className="text-xs text-gray-500 mt-1">Meta: 85% até junho</p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-4">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="text-sm font-medium text-gray-900">Satisfação Turística</h4>
-                <span className="text-sm text-gray-600">4.6 / 4.8</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-green-600 h-2 rounded-full" style={{ width: '96%' }} />
-              </div>
-              <p className="text-xs text-gray-500 mt-1">Meta: 4.8/5 até setembro</p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-4">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="text-sm font-medium text-gray-900">Eventos Realizados</h4>
-                <span className="text-sm text-gray-600">108 / 120</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-purple-600 h-2 rounded-full" style={{ width: '90%' }} />
-              </div>
-              <p className="text-xs text-gray-500 mt-1">Meta: 120 eventos no ano</p>
             </div>
           </div>
         </div>
