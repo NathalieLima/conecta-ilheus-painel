@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Users, 
+  Users as UsersIcon, 
   User, 
   UserCheck, 
   TrendingUp, 
@@ -36,7 +36,7 @@ const Users: React.FC = () => {
       value: '47,832',
       change: '+12%',
       changeType: 'positive' as const,
-      icon: Users,
+      icon: UsersIcon,
       color: 'blue',
       description: 'Usuários ativos no último mês'
     },
@@ -440,7 +440,7 @@ const Users: React.FC = () => {
           
           <div className="p-4 bg-green-50 rounded-lg border border-green-200">
             <div className="flex items-center space-x-2 mb-2">
-              <Users className="w-5 h-5 text-green-600" />
+              <UsersIcon className="w-5 h-5 text-green-600" />
               <h4 className="font-medium text-green-900">Público Jovem Adulto</h4>
             </div>
             <p className="text-sm text-green-800">
