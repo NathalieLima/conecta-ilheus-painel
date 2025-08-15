@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Tourism from './components/Tourism';
-import Mobility from './components/Mobility';
 import Analytics from './components/Analytics';
 import Users from './components/Users';
 
@@ -15,8 +14,6 @@ function App() {
         return <Dashboard />;
       case 'tourism':
         return <Tourism />;
-      case 'mobility':
-        return <Mobility />;
       case 'analytics':
         return <Analytics />;
       case 'users':

@@ -2,7 +2,6 @@ import React from 'react';
 import { 
   LayoutDashboard, 
   MapPin, 
-  Bus, 
   Calendar, 
   Users, 
   BarChart3,
@@ -19,7 +18,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, onSectionChange }) => 
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'tourism', label: 'Turismo', icon: MapPin },
-    { id: 'mobility', label: 'Mobilidade', icon: Bus },
   ];
 
   const secondaryItems = [
